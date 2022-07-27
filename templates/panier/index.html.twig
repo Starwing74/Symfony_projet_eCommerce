@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="example-wrapper">
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/listing">listing</a></li>
+                <li><a href="/panier" style="color: white">panier</a></li>
+                <li><a href="/inscription">inscription</a></li>
+                <li><a href="/login">connection</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div>
+        <p>Inscription</p>
+        <h1>Hello {{ app.user.name }} id: {{ app.user.id }} </h1>
+            <div>
+             test
+            </div>
+        {% if items | length > 0 %}
+            <h1>list:</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nom:</td>
+                        <td>Prix</td>
+                        <td>Quantité</td>
+                        <td>Prix total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr style="border-color: black">
+                        <td>{{ item.product.name }}:</td>
+                        <td>{{ item.product.price }}</td>
+                        <td align="center">{{ item.quantity }}</td>
+                        <td align="center">{{ item.product.price * item.quantity }}</td>
+                        <td><a href="{{ path('panierRajouter', { id: item.product.id})}}">rajouter</a></td>
+                        {% if item.quantity > 1 %}
+                            <td><a href="{{ path('panierDiminuer', { id: item.product.id})}}">diminuer</a></td>
+                        {% endif %}
+                        <td>
+                            <a href="{{ path('panierRemove', { id: item.product.id})}}">trash</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            <p>C'est vide</p>
+        {% endif %}
+
+        <button><a href="{{ path('panierConfirme', { id: app.user.id})}})}}">Confirmée</a></button>
+    </div>
+{% endblock %}

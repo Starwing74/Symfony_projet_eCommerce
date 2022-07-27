@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailController!{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="example-wrapper">
+    <nav>
+        <ul>
+            <li><a href="/accueil">Accueil</a></li>
+            <li><a href="/listing">listing</a></li>
+            <li><a href="/panier">panier</a></li>
+            <li><a href="/inscription">inscription</a></li>
+            <li><a href="/login">connection</a></li>
+        </ul>
+    </nav>
+
+    <h1>détail</h1>
+    <div>
+        <p>{{ product.description }}</p>
+    </div>
+</div>
+{% endblock %}

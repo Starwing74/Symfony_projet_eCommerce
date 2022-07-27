@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListingController!{% endblock %}
+
+{% block body %}
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/listing" style="color: white">listing</a></li>
+                <li><a href="/panier">panier</a></li>
+                <li><a href="/inscription">inscription</a></li>
+                <li><a href="/login">connection</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <center style="background-color: #5eb5e0">
+        <span>
+            <a href="{{ path('listing') }}">all</a>
+            {% for categorie in categories %}
+                <a href="{{ path('listing_categorie', { id: categorie.id})}}">{{ categorie.name }}</a>
+            {% endfor %}
+        </span>
+    </center>
+
+    <center>
+        {% for product in products %}
+        <div class="div2" align="center">
+            <p align="center">{{ product.name }}</p><br>
+            <img border="5" src="{{ product.photo }}">
+            <h1>{{ product.price }} €</h1>
+            <center>
+                <a style="color: white; background-color: blue" href="{{ path('detailId', { id: product.id})}}">detail</a>
+                <a style="color: black; background-color: blue" href="{{ path('listing_panier', { id: product.id})}}">Mettre au panier</a>
+            </center>
+        </div>
+        {% endfor %}
+    </center>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatusController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h1>Status de  la commande: {{ Commande.status }}</h1>
+    {% if Commande.status == "Payée" %}
+        <h1>Your orders has been validated {{ app.user.name }} </h1>
+    {% elseif Commande.status == "En livraison" %}
+        <h1>Your orders has been send {{ app.user.name }} </h1>
+            <a href="{{ path('statusFinish', { id: Commande.id})}}">Please click here when received order</a>
+        {% elseif Commande.status == "Terminée" %}
+            <h1>Your orders his finish want to review our product? </h1>
+            {% for item in PanierList %}
+                <p>{{ item.product.name }} and id: {{ item.product.id }}</p>
+                <button><a href="{{ path('statusScore', { score: 0,idscore: item.product.id, id: Commande.id})}}">0</a></button>
+                <button><a href="{{ path('statusScore', { score: 1,idscore: item.product.id, id: Commande.id})}}">1</a></button>
+                <button><a href="{{ path('statusScore', { score: 2,idscore: item.product.id , id: Commande.id})}}">2</a></button>
+                <button><a href="{{ path('statusScore', { score: 3,idscore: item.product.id , id: Commande.id})}}">3</a></button>
+                <button><a href="{{ path('statusScore', { score: 4,idscore: item.product.id , id: Commande.id})}}">4</a></button>
+                <button><a href="{{ path('statusScore', { score: 5,idscore: item.product.id , id: Commande.id})}}">5</a></button>
+            {% endfor %}
+            <a href="{{ path('statusReview', { id: Commande.id})}})}}">Validate review</a>
+    {% endif %}
+
+</div>
+{% endblock %}

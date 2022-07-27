@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ConnectionController!{% endblock %}
+
+{% block body %}
+<style>
+</style>
+
+<div class="example-wrapper">
+    <nav>
+        <ul>
+            <li><a href="/accueil">Accueil</a></li>
+            <li><a href="/listing">listing</a></li>
+            <li><a href="/detail">detail</a></li>
+            <li><a href="/panier">panier</a></li>
+            <li><a href="/inscription">inscription</a></li>
+            <li><a href="/connection" style="color: white">connection</a></li>
+        </ul>
+    </nav>
+    <h1>Connection</h1>
+    <input placeholder="email"><br>
+    <input placeholder="password">
+    <input type="submit" id="button" value="submit">
+</div>
+{% endblock %}

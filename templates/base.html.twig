@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html>
+<html>
+    <style>
+        /*Reset CSS*/
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: Avenir, sans-serif;
+        }
+
+        nav{
+            width: 100%;
+            margin: 0px auto 40px auto;
+            background-color: white;
+            position: sticky;
+            top: 0px;
+        }
+
+        nav ul{
+            list-style-type: none;
+        }
+
+        nav li{
+            float: left;
+            width: 20%;/*100% divisé par le nombre d'éléments de menu*/
+            text-align: center;/*Centre le texte dans les éléments de menu*/
+        }
+
+        /*Evite que le menu n'ait une hauteur nulle*/
+        nav ul::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        nav a{
+            display: block; /*Toute la surface sera cliquable*/
+            text-decoration: none;
+            color: black;
+            background-color: blue;
+            border-bottom: 2px solid transparent;/*Evite le décalage des éléments sous le menu à cause de la bordure en :hover*/
+            padding: 10px 0px;/*Agrandit le menu et espace la bordure du texte*/
+        }
+
+        nav a:hover{
+            color: orange;
+            border-bottom: 2px solid gold;
+        }
+
+        .conteneur{
+            margin: 0px 20px;
+            height: 1500px;
+        }
+
+        img{
+            width: 100px;
+            lenght: 100px;
+        }
+
+        .div1{
+            background-color: blue;
+            width: 200px;
+            lenght: 200px;
+            align-content: center;
+        }
+
+        .div2{
+            border-color: black;
+            border: solid;
+            border-spacing: 15px;
+            height: 200px;
+            width: 25%;
+            display: inline-table;
+            margin-top: 30px;
+            align-content: center;
+            background-color: blue;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid black;
+        }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

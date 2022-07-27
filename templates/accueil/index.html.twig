@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="/accueil" style="color: white">Accueil</a></li>
+            <li><a href="/listing">listing</a></li>
+            <li><a href="/panier">panier</a></li>
+            <li><a href="/inscription">inscription</a></li>
+            <li><a href="/login">connection</a></li>
+        </ul>
+    </nav>
+
+    <div class="conteneur">
+        <p>Du contenu sous le menu</p>
+        {% for user in users %}
+        <div>
+            {{ user.id }}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
